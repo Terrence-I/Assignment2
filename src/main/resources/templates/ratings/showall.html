@@ -7,7 +7,7 @@
 </head>
 <body>
     <main>
-        <h1>Staff ratings</h1>
+        <h1>Rate CS Teaching Staff</h1>
         <p><a href="/ratings/new">Submit a rating</a></p>
         <p th:if="${#lists.isEmpty(ratings)}">No ratings have been submitted yet.</p>
         <table th:unless="${#lists.isEmpty(ratings)}">
@@ -27,7 +27,7 @@
                 
 
                     <td th:text="${rating.name}"></td>
-                    <td th:text="${rating.roleType}"></td>
+                    <td th:text="${rating.roleTitle}"></td>
                     <td th:text="${rating.overallScore}"></td>
                     <td>
                         <a th:href="@{/ratings/{id}(id=${rating.uid})}">View</a>
@@ -36,12 +36,11 @@
                         
                         <a th:href="@{/ratings/{id}/delete(id=${rating.uid})}">Delete</a>
                     </td>
-                    <td th:text="${rating.createdAt}"></td>
                     <td th:text="${rating.updatedAt}"></td>
+                    <td th:text="${rating.createdAt}"></td>
                 </tr>
             </tbody>
         </table>
-        <p><a href="/">Home</a></p>
     </main>
     
 </body>

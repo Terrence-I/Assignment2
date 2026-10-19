@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>All Ratings</title>
+    <title>Rating details</title>
 </head>
 <body>
     <main>
@@ -9,7 +9,7 @@
 
         <p>Name: <span th:text="${rating.name}"></span></p>
         <p>Email: <span th:text="${rating.email}"></span></p>
-        <p>Role: <span th:text="${rating.roleType}"></span></p>
+        <p>Role: <span th:text="${rating.roleTitle}"></span></p>
         <p>Clarity: <span th:text="${rating.clarity}"></span></p>
         <p>Niceness: <span th:text="${rating.niceness}"></span></p>
         <p>Knowledge: <span th:text="${rating.knowledgeableScore}"></span></p>
@@ -18,7 +18,11 @@
         <p>Created at: <span th:text="${rating.createdAt}"></span></p>
         <p>Updated at: <span th:text="${rating.updatedAt}"></span></p>
 
-        <p><a href="/ratings/main">Back to ratings</a></p>
+        <p>
+            <a th:href="@{/ratings/{id}/edit(id=${rating.uid})}">Edit</a>
+            <a th:href="@{/ratings/{id}/delete(id=${rating.uid})}">Delete</a>
+        </p>
+        <p><a th:href="@{/ratings/main}">Back to ratings</a></p>
     </main>
 </body>
 </html>

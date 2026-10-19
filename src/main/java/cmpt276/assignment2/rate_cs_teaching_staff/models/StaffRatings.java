@@ -159,6 +159,11 @@ public class StaffRatings {
         double score = ((clarity + knowledgeableScore + niceness) / 3.0);
         return score;
     }
+
+    public String getRoleTitle() {
+        return ProfileConstructor.create(roleType).displayTitle();
+    }
+
     @PrePersist
     protected void onCreate() {
         LocalDateTime now = LocalDateTime.now();
