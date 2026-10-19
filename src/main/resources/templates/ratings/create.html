@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Submit a rating</title>
+</head>
+<body>
+    <main>
+        <h1>Submit a staff rating</h1>
+        <form method="post" th:action="@{/ratings/add}" th:object="${rating}">
+            <p>
+                <label for="name">Staff member name</label>
+                <input id="name" type="text" th:field="*{name}" required maxlength="100">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </p>
+            <p>
+                <label for="email">Your email</label>
+                <input id="email" type="email" th:field="*{email}" required maxlength="254">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </p>
+            <p>
+                <label for="roleType">Staff role</label>
+                <select id="roleType" th:field="*{roleType}" required>
+                    <option value="">Choose a role</option>
+                    <option th:each="role : ${roles}" th:value="${role}" th:text="${role}"></option>
+                </select>
+                <span th:if="${#fields.hasErrors('roleType')}" th:errors="*{roleType}"></span>
+            </p>
+            <p>
+                <label for="clarity">Clarity (1–10)</label>
+                <input id="clarity" type="number" th:field="*{clarity}" min="1" max="10" required>
+                <span th:if="${#fields.hasErrors('clarity')}" th:errors="*{clarity}"></span>
+            </p>
+            <p>
+                <label for="niceness">Niceness (1–10)</label>
+                <input id="niceness" type="number" th:field="*{niceness}" min="1" max="10" required>
+                <span th:if="${#fields.hasErrors('niceness')}" th:errors="*{niceness}"></span>
+            </p>
+            <p>
+                <label for="knowledgeableScore">Knowledge (1–10)</label>
+                <input id="knowledgeableScore" type="number" th:field="*{knowledgeableScore}" min="1" max="10" required>
+                <span th:if="${#fields.hasErrors('knowledgeableScore')}" th:errors="*{knowledgeableScore}"></span>
+            </p>
+            <p>
+                <label for="comment">Comment (optional)</label>
+                <textarea id="comment" th:field="*{comment}" maxlength="1000"></textarea>
+                <span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></span>
+            </p>
+            <button type="submit">Save rating</button>
+        </form>
+        <p><a href="/ratings/main">View ratings</a></p>
+    </main>
+</body>
+</html>

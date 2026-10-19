@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Staff ratings</title>
+</head>
+<body>
+    <main>
+        <h1>Rate CS Teaching Staff</h1>
+        <p><a href="/ratings/new">Submit a rating</a></p>
+        <p th:if="${#lists.isEmpty(ratings)}">No ratings have been submitted yet.</p>
+        <table th:unless="${#lists.isEmpty(ratings)}">
+            <thead>
+                <tr>
+                    <th>Staff member</th>
+                    <th>Role</th>
+                    <th>Overall Score</th>
+                    <th>Actions</th>
+                    <th>Last Updated</th>
+                    <th>Created at</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="rating : ${ratings}">
+                    
+                
+
+                    <td th:text="${rating.name}"></td>
+                    <td th:text="${rating.roleTitle}"></td>
+                    <td th:text="${rating.overallScore}"></td>
+                    <td>
+                        <a th:href="@{/ratings/{id}(id=${rating.uid})}">View</a>
+                            
+                        <a th:href="@{/ratings/{id}/edit(id=${rating.uid})}">Edit</a>
+                        
+                        <a th:href="@{/ratings/{id}/delete(id=${rating.uid})}">Delete</a>
+                    </td>
+                    <td th:text="${rating.updatedAt}"></td>
+                    <td th:text="${rating.createdAt}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    
+</body>
+</html>
