@@ -11,8 +11,7 @@ public class ProfileConstructor {
         return switch (role) {
             case TA -> new TAProfile();
             case PROF -> new ProfessorProfile();
-            case INSTRUCTOR -> () -> "Instructor";
-            case STAFF -> () -> "Staff";
+            case DEFAULT -> new DEFProfile();
         };
     }
 }
