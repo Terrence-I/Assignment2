@@ -1,0 +1,40 @@
+<form th:action="@{/ratings/{id}/update(id=${rating.uid})}"
+      th:object="${rating}"
+      method="post">
+
+    <input type="text" th:field="*{name}">
+    <div th:errors="*{name}"></div>
+
+    <input type="email" th:field="*{email}">
+    <div th:errors="*{email}"></div>
+
+    <select th:field="*{roleType}">
+        <option th:each="role : ${roles}"
+                th:value="${role}"
+                th:text="${role}">
+        </option>
+    </select>
+
+    <input type="number"
+           min="1"
+           max="10"
+           th:field="*{clarity}">
+
+    <input type="number"
+           min="1"
+           max="10"
+           th:field="*{niceness}">
+
+    <input type="number"
+           min="1"
+           max="10"
+           th:field="*{knowledgeableScore}">
+
+    <textarea th:field="*{comment}">
+    </textarea>
+
+    <button type="submit">
+        Update
+    </button>
+
+</form>
