@@ -35,7 +35,7 @@ Requirements: Java 17 or newer, PostgreSQL, and the included Maven wrapper.
     DB_URL=jdbc:postgresql://dpg-dbavi90m7kps73afk920-a.oregon-postgres.render.com:5432/staffratingterrenceishak
     DB_USERNAME=te_is_staffrate_user
   
-4. Deploy and open the Render service URL.
+4. Deploy and open the Render service URL. Currently the URL for the project is https://assignment2-1-x9jl.onrender.com/
 
 Use Render’s internal database host when the web service and database are in
 the same Render region. Keep credentials in Render environment settings, not
