@@ -3,57 +3,38 @@
 A Spring Boot, Thymeleaf, and PostgreSQL application for creating and managing
 teaching staff ratings.
 
-## Features
-
-- List ratings with staff name, role title, and overall score.
-- View, create, edit, and delete an individual rating.
-- Validate names, email addresses, roles, comments, and 1–10 scores on the
-  server.
-- Keep email addresses unique: one email address may submit one rating.
-- Display role-specific titles using `StaffMemberProfile` implementations.
-- Persist data to PostgreSQL.
-
+AI usage Declaration.
+Name: Terrence Ishak
+I used VScode's built in ai agent in order to trouble shoot through the the Controller, the Test setup, as well a general bug fixing.
+Also used AI to help with getting the website to launch on Render, since I was having trouble connecting the database to the project.
 ## How to run locally
 
 Requirements: Java 17 or newer, PostgreSQL, and the included Maven wrapper.
 
-1. Create a PostgreSQL database (the default expected database name is
-   `staffratings`).
+1. In rate_cs_teaching_staff\src\main\resources\application.properties
 2. Set the database environment variables in the terminal used to start the
-   application. For PowerShell:
-
-   ```powershell
-   $env:DB_URL = "jdbc:postgresql://localhost:5432/staffratings"
-   $env:DB_USERNAME = "your-local-postgres-user"
-   $env:DB_PASSWORD = "your-local-postgres-password"
+   application. The app uses `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` to connect to the render PostgreSQL database.
    ```
+   These are the environment variables used in application.properties
+   DB_URL = jdbc:postgresql://dpg-dbavi90m7kps73afk920-a.oregon-postgres.render.com:5432/staffratingterrenceishak
+   DB_USERNAME = te_is_staffrate_user
+   DB_PASSWORD = 1FwqzQP8v03KoUXTdeNmQDD5kgUjgvhT
+   ```   
+3. I have been running the code on VS code's terminal, once it has finished compiling and is running, open `(http://localhost:8080/ratings/main)` in a browser.
 
-3. Start the app:
 
-   ```powershell
-   .\mvnw.cmd spring-boot:run
-   ```
-
-4. Open `http://localhost:8080/`.
-
-The app uses `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`; defaults are provided
-for a local PostgreSQL database. Do not commit real credentials.
 
 ## How to deploy on Render
 
 1. Create a Render PostgreSQL database and a Render web service connected to
    this repository.
-2. Configure the web service build command as `./mvnw clean package` and the
-   start command as
-   `java -jar target/rate_cs_teaching_staff-0.0.1-SNAPSHOT.jar`.
+
 3. Set these environment variables in the Render web service:
-   - `DB_URL`: JDBC-form URL for the database. Use the Render host and database
-     name, with port `5432` and `?sslmode=require` (add
-     `&channelBinding=disable` only if the driver reports a channel-binding
-     error).
-   - `DB_USERNAME`: Render database username.
-   - `DB_PASSWORD`: Render database password.
-   - `DDL_AUTO`: `update` for this assignment deployment.
+   ```
+    DB_PASSWORD=1FwqzQP8v03KoUXTdeNmQDD5kgUjgvhT
+    DB_URL=jdbc:postgresql://dpg-dbavi90m7kps73afk920-a.oregon-postgres.render.com:5432/staffratingterrenceishak
+    DB_USERNAME=te_is_staffrate_user
+  
 4. Deploy and open the Render service URL.
 
 Use Render’s internal database host when the web service and database are in
